@@ -22,6 +22,7 @@ int main()
     pid_t pid1 = fork();
     if (pid1 == 0)
     {
+
         close(pipefd[0]);
         doeIets('p', 5, 8, pipefd[1]); // print a wacht 0.5 sec doe het 8 keer
         close(pipefd[1]);
@@ -43,15 +44,18 @@ int main()
         close(pipefd[1]);
         exit(0);
     }
-    // doeIets('c', 20, 8);
+
+    char buffer;
+    close(pipefd[1]);
+    while (read(pipefd[0], &buffer, 1) > 0)
+    {
+        std::cout << buffer;
+    }
+
+    close(pipefd[0]);
 
     while (wait(NULL) > 0)
         ;
-
-    char buffer[128];
-    size_t bufferSize = sizeof(buffer);
-    read(pipefd[0], buffer, bufferSize);
-    close(pipefd[0]);
 
     tm1.Stop();
     cout << tm1.deTijd() << "  " << tm1.deNtijd() << endl;
@@ -65,7 +69,7 @@ void doeIets(char c, unsigned int tijd, unsigned int aantal, int pipefd_write)
     for (int i = 0; i < aantal; ++i)
     {
         write(pipefd_write, &c, 1);
-        // usleep(100000 * tijd);
+        usleep(100000 * tijd);
     }
     write(pipefd_write, "\n", 1);
 }

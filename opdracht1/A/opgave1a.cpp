@@ -1,6 +1,7 @@
 #include <iostream>
 #include <unistd.h>
 #include "Timer.h"
+#include <sys/wait.h>
 
 using namespace std;
 
@@ -29,8 +30,11 @@ int main()
         doeIets('b', 15, 8);
         exit(0);
     }
-    doeIets('c', 20, 8);
+    doeIets('c', 5, 8);
 
+    while (wait(NULL) > 0)
+        ;
+    
     tm1.Stop();
     cout << tm1.deTijd() << "  " << tm1.deNtijd() << endl;
 
@@ -43,7 +47,7 @@ void doeIets(char c, unsigned int tijd, unsigned int aantal)
     for (int i = 0; i < aantal; ++i)
     {
         cout << c << flush; // flush leeg output buffer (print direct)
-        // usleep(100000 * tijd);
+        usleep(100000 * tijd);
     }
     cout << endl;
 }
