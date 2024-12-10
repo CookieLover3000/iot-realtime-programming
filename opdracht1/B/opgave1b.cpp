@@ -69,7 +69,7 @@ void doeIets(char c, unsigned int tijd, unsigned int aantal, int pipefd_write)
     for (int i = 0; i < aantal; ++i)
     {
         write(pipefd_write, &c, 1);
-        usleep(100000 * tijd);
+        // usleep(100000 * tijd);
     }
     write(pipefd_write, "\n", 1);
 }

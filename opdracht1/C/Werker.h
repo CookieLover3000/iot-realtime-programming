@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <queue>
+#include <mutex>
 
 
 class Werker
@@ -13,10 +14,11 @@ public:
     Werker();
     ~Werker();
     void plaatsIets(char c, int a);
-    void haalIets();
+    void haalIets(int);
 
 private:
-    static std::queue<char> _queue;
+    static inline std::queue<char> _queue;
+    static inline std::mutex mtx;
 };
 
 #endif

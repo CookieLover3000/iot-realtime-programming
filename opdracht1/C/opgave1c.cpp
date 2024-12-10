@@ -12,10 +12,10 @@ int main()
 
     tm1.Reset();
 
-    std::thread thread1(&Werker::plaatsIets, w1, 'a', 5);
-    std::thread thread2(&Werker::plaatsIets, w1, 'b', 5);
-    std::thread thread3(&Werker::plaatsIets, w1, 'c', 5);
-    std::thread thread4(&Werker::haalIets, w1);
+    std::thread thread1(&Werker::plaatsIets, &w1, 'a', 8);
+    std::thread thread2(&Werker::plaatsIets, &w1, 'b', 8);
+    std::thread thread3(&Werker::plaatsIets, &w1, 'c', 8);
+    std::thread thread4(&Werker::haalIets, &w1, 24);
 
     thread1.join();
     thread2.join();
