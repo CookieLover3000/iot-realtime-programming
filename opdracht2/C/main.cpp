@@ -43,6 +43,8 @@ int main(int argc, const char *argv[])
     t5.join();
   }
   std::cout << "Hello, IoT " << vw1.hetResultaat() << endl;
+  std::cout << "Hello, IoT " << vw2.hetResultaat() << endl;
+  std::cout << "samengevoegd: " << vw1.hetResultaat() + vw2.hetResultaat() << std::endl;
   vector<int> ts = vw1.deTussenstanden();
 
   for (auto i : ts)
