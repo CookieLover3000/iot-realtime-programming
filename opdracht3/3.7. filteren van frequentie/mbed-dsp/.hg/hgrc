@@ -1,6 +1,6 @@
 # example repository config (see 'hg help config' for more info)
 [paths]
-mbed-studio-cache = c:\Users\john\AppData\Local\Mbed Studio\library-cache\os.mbed.com\users\mbed_official\code\mbed-dsp
+mbed-studio-cache = /home/iwan/.config/Mbed Studio/library-cache/os.mbed.com/users/mbed_official/code/mbed-dsp
 default = https://os.mbed.com/users/mbed_official/code/mbed-dsp/
 
 # path aliases to other clones of this repo in URLs or filesystem paths
